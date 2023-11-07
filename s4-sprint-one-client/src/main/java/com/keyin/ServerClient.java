@@ -193,7 +193,7 @@ public class ServerClient {
                             int updatedNumberOfPassengers = scanner.nextInt();
     
                             String updatedAircraftJson = "{\"type\":\"" + updatedType + "\",\"airlineName\":\"" + updatedAirlineName + "\",\"numberOfPassengers\":" + updatedNumberOfPassengers + "}";
-                            String updateResponse = performPutRequest(serverBaseUrl + "/api/aircraft" + aircraftId, updatedAircraftJson);
+                            String updateResponse = performPutRequest(serverBaseUrl + "/api/aircraft/" + aircraftId, updatedAircraftJson);
                             System.out.println("Update Response: " + updateResponse);
                         } catch (IOException | InterruptedException e) {
                             e.printStackTrace();
@@ -273,7 +273,7 @@ public class ServerClient {
                         long updatedCityId = scanner.nextLong();
     
                         String updatedAirportJson = "{\"name\":\"" + updatedName + "\",\"code\":\"" + updatedCode + "\",\"cityId\":" + updatedCityId + "}";
-                        String updateResponse = performPutRequest(serverBaseUrl + "/api/airports" + airportId, updatedAirportJson);
+                        String updateResponse = performPutRequest(serverBaseUrl + "/api/airports/" + airportId, updatedAirportJson);
                         System.out.println("Update Response: " + updateResponse);
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
@@ -352,7 +352,7 @@ public class ServerClient {
                         int updatedPopulation = scanner.nextInt();
     
                         String updatedCityJson = "{\"name\":\"" + updatedName + "\",\"province\":\"" + updatedprovince + "\",\"population\":" + updatedPopulation + "}";
-                        String updateResponse = performPutRequest(serverBaseUrl + "/api/cities" + cityId, updatedCityJson);
+                        String updateResponse = performPutRequest(serverBaseUrl + "/api/cities/" + cityId, updatedCityJson);
                         System.out.println("Update Response: " + updateResponse);
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
@@ -429,7 +429,7 @@ public class ServerClient {
                             String updatedPhoneNumber = scanner.next();
     
                             String updatedPassengerJson = "{\"firstName\":\"" + updatedFirstName + "\",\"lastName\":\"" + updatedLastName + "\",\"phoneNumber\":\"" + updatedPhoneNumber + "\"}";
-                            String updateResponse = performPutRequest(serverBaseUrl + "/api/passengers" + passengerId, updatedPassengerJson);
+                            String updateResponse = performPutRequest(serverBaseUrl + "/api/passengers/" + passengerId, updatedPassengerJson);
                             System.out.println("Update Response: " + updateResponse);
                         } catch (IOException | InterruptedException e) {
                             e.printStackTrace();
