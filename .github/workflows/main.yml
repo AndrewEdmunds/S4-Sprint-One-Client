@@ -1,32 +1,35 @@
 name: Java CI with Maven
 
-
-
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
-
-
+    branches:
+      - main
 
 jobs:
   build:
 
-
-
     runs-on: ubuntu-latest
 
-
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 20
-        uses: actions/setup-java@v3
-        with:
-          java-version: '20'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+    - name: Checkout code
+      uses: actions/checkout@v3
 
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'  # Adjust the Java version as needed
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-maven-
+
+    - name: Build with Maven
+      run: mvn -B package --file s4-sprint-one-client/pom.xml
